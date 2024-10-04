@@ -84,7 +84,8 @@
     </record>
 
     <!-- Menu Principal -->
-    <menuitem id="menu_cineprex_root" name="CinéPrex" sequence="10"/>
+     <!-- Menu Principal avec action par défaut -->
+    <menuitem id="menu_cineprex_root" name="CinéPrex" sequence="10" action="action_sites"/>
 
     <!-- Menu Sites -->
     <menuitem id="menu_sites" name="Sites" parent="menu_cineprex_root" sequence="10" action="action_sites"/>

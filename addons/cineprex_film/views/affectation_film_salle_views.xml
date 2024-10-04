@@ -1,43 +1,47 @@
 <odoo>
-    <!-- Vue Formulaire pour AffectationFilmSalle -->
-    <record id="view_affectation_film_salle_form" model="ir.ui.view">
-        <field name="name">affectation.film.salle.form</field>
-        <field name="model">cineprex.affectation_film_salle</field>
+    <!-- Menu racine pour Cineprex -->
+    <menuitem id="menu_cineprex_root" name="Cineprex_film" sequence="10"/>
+
+
+    <!-- Vue Formulaire pour SeanceFilmSalle -->
+    <record id="view_seance_film_salle_form" model="ir.ui.view">
+        <field name="name">seance.film.salle.form</field>
+        <field name="model">cineprex.seance_film_salle</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
                         <field name="film_id" string="Film" required="1"/>
                         <field name="salle_id" string="Salle" required="1"/>
-                        <field name="start_date" string="Date de début" required="1"/>
-                        <field name="end_date" string="Date de fin" required="1"/>
+                        <field name="start_time" string="Heure de début" required="1"/>
+                        <field name="end_time" string="Heure de fin" required="1"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- Vue Liste pour AffectationFilmSalle -->
-    <record id="view_affectation_film_salle_tree" model="ir.ui.view">
-        <field name="name">affectation.film.salle.tree</field>
-        <field name="model">cineprex.affectation_film_salle</field>
+    <!-- Vue Liste pour SeanceFilmSalle -->
+    <record id="view_seance_film_salle_tree" model="ir.ui.view">
+        <field name="name">seance.film.salle.tree</field>
+        <field name="model">cineprex.seance_film_salle</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="film_id" string="Film"/>
                 <field name="salle_id" string="Salle"/>
-                <field name="start_date" string="Date de début"/>
-                <field name="end_date" string="Date de fin"/>
+                <field name="start_time" string="Heure de début"/>
+                <field name="end_time" string="Heure de fin"/>
             </tree>
         </field>
     </record>
 
-    <!-- Action pour AffectationFilmSalle -->
-    <record id="action_affectation_film_salle" model="ir.actions.act_window">
-        <field name="name">Affectations Film/Salle</field>
-        <field name="res_model">cineprex.affectation_film_salle</field>
+    <!-- Action pour SeanceFilmSalle -->
+    <record id="action_seance_film_salle" model="ir.actions.act_window">
+        <field name="name">Séances Film/Salle</field>
+        <field name="res_model">cineprex.seance_film_salle</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Menu pour AffectationFilmSalle -->
-    <menuitem id="menu_affectation_film_salle" name="Affectation Film/Salle" parent="cineprex.menu_cineprex_root" sequence="40" action="action_affectation_film_salle"/>
+    <!-- Menu pour SeanceFilmSalle -->
+    <menuitem id="menu_seance_film_salle" name="Séances Film/Salle" parent="cineprex.menu_cineprex_root" action="action_seance_film_salle"/>
 </odoo>

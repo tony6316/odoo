@@ -1,13 +1,13 @@
 {
-    'name': 'CinéPrex Salle/Site Management',
+    'name': 'CinéPrex Salle/Site gestion',
     'version': '1.0',
     'category': 'Management',
     'summary': 'Gestion des salles et sites pour CinéPrex',
-    'depends': ['base'],  # Ajoute ici d'autres dépendances si nécessaire
+    'depends': ['base'],  # Ajoute d'autres dépendances si nécessaire
     'data': [
-        'views/site_salle_views.xml',
+        'views/site_salle_views.xml',  # Assure-toi que ce fichier est bien inclus
         'security/ir.model.access.csv',
     ],
-    'installable': True,  # Assure-toi que ceci est bien présent
+    'installable': True,
     'application': True,
 }

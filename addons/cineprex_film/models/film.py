@@ -9,3 +9,10 @@ class Film(models.Model):
     genre = fields.Char(string="Genre", required=True)
     release_date = fields.Date(string="Date de sortie", required=True)
     description = fields.Text(string="Description")
+
+    def name_get(self):
+        result = []
+        for film in self:
+            name = f"{film.title}"
+            result.append((film.id, name))
+        return result

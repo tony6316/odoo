@@ -6,16 +6,16 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Action pour Affectation Film/Salle -->
-    <record id="action_affectation_film_salle" model="ir.actions.act_window">
-        <field name="name">Affectation Film/Salle</field>
-        <field name="res_model">cineprex.affectation_film_salle</field>
+    <!-- Action pour Séance Film/Salle -->
+    <record id="action_seance_film_salle" model="ir.actions.act_window">
+        <field name="name">Séance Film/Salle</field>
+        <field name="res_model">cineprex.seance_film_salle</field> <!-- Correction ici -->
         <field name="view_mode">tree,form</field>
     </record>
 
     <!-- Menu pour la gestion des films -->
     <menuitem id="menu_films" name="Films" parent="menu_cineprex_root" sequence="30" action="action_films"/>
 
-    <!-- Menu pour l'affectation des films aux salles -->
-    <menuitem id="menu_affectation_film_salle" name="Affectation Film/Salle" parent="menu_cineprex_root" sequence="40" action="action_affectation_film_salle"/>
+    <!-- Menu pour la gestion des séances (anciennement affectation des films aux salles) -->
+    <menuitem id="menu_seance_film_salle" name="Séance Film/Salle" parent="menu_cineprex_root" sequence="40" action="action_seance_film_salle"/> <!-- Correction ici -->
 </odoo>

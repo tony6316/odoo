@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_film,cineprex.film,model_cineprex_film,,1,1,1,1
-access_affectation_film_salle,cineprex.affectation_film_salle,model_cineprex_affectation_film_salle,,1,1,1,1
+access_cineprex_seance_film_salle,cineprex.seance_film_salle,model_cineprex_seance_film_salle,,1,1,1,1

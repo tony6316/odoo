@@ -1,0 +1,94 @@
+<odoo>
+    <!-- Vues Formulaire pour Site -->
+    <record id="view_site_form" model="ir.ui.view">
+        <field name="name">site.form</field>
+        <field name="model">cineprex.site</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="city"/>
+                        <field name="number_of_rooms"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vues Liste pour Site -->
+    <record id="view_site_tree" model="ir.ui.view">
+        <field name="name">site.tree</field>
+        <field name="model">cineprex.site</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="city"/>
+                <field name="number_of_rooms"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action pour Site -->
+    <record id="action_sites" model="ir.actions.act_window">
+        <field name="name">Sites</field>
+        <field name="res_model">cineprex.site</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créez le premier site de cinéma
+            </p>
+        </field>
+    </record>
+
+    <!-- Vues Formulaire pour Salle -->
+    <record id="view_salle_form" model="ir.ui.view">
+        <field name="name">salle.form</field>
+        <field name="model">cineprex.salle</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="capacity"/>
+                        <field name="site_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vues Liste pour Salle -->
+    <record id="view_salle_tree" model="ir.ui.view">
+        <field name="name">salle.tree</field>
+        <field name="model">cineprex.salle</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="capacity"/>
+                <field name="site_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action pour Salle -->
+    <record id="action_salles" model="ir.actions.act_window">
+        <field name="name">Salles</field>
+        <field name="res_model">cineprex.salle</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créez la première salle de cinéma
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Principal -->
+    <menuitem id="menu_cineprex_root" name="CinéPrex" sequence="10"/>
+
+    <!-- Menu Sites -->
+    <menuitem id="menu_sites" name="Sites" parent="menu_cineprex_root" sequence="10" action="action_sites"/>
+
+    <!-- Menu Salles -->
+    <menuitem id="menu_salles" name="Salles" parent="menu_cineprex_root" sequence="20" action="action_salles"/>
+</odoo>

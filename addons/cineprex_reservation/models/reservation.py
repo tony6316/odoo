@@ -9,35 +9,29 @@ class Reservation(models.Model):
     salle_id = fields.Many2one('cineprex.salle', string="Salle", required=True)
     customer_name = fields.Char(string="Nom du client", required=True)
     seat_count = fields.Integer(string="Nombre de places", required=True)
-    reservation_date = fields.Datetime(string="Date de réservation", default=fields.Datetime.now, required=True)
-
-    # Nouveau champ Many2one pour choisir la séance (affectation film/salle)
-    session_id = fields.Many2one('cineprex.affectation_film_salle', string="Séance", required=True, domain="[('salle_id', '=', salle_id), ('start_date', '<=', reservation_date), ('end_date', '>=', reservation_date)]")
+    reservation_date = fields.Datetime(string="Date de réservation", default=fields.Datetime.now)
+    session_id = fields.Many2one(
+        'cineprex.seance_film_salle',
+        string="Séance",
+        domain="[('film_id', '=', film_id), ('salle_id', '=', salle_id), ('start_time', '>=', reservation_date), ('start_time', '<=', reservation_date)]"
+    )
 
     # Champ calculé pour vérifier la capacité restante
     remaining_capacity = fields.Integer(string="Capacité restante", compute='_compute_remaining_capacity', store=True)
 
-    @api.depends('salle_id', 'seat_count', 'session_id')
+    @api.depends('salle_id', 'session_id', 'seat_count')
     def _compute_remaining_capacity(self):
         for record in self:
-            if record.session_id:
-                max_capacity = record.session_id.salle_id.capacity
-                # Rechercher toutes les réservations pour cette salle et cette séance
-                domain = [
-                    ('session_id', '=', record.session_id.id),
-                ]
-                if record.id:
-                    domain.append(('id', '!=', record.id))  # Exclure la réservation en cours si elle est déjà en base
+            max_capacity = record.salle_id.capacity
+            total_reserved = sum(self.env['cineprex.reservation'].search([
+                ('film_id', '=', record.film_id.id),
+                ('salle_id', '=', record.salle_id.id),
+                ('session_id', '=', record.session_id.id)
+            ]).mapped('seat_count'))
+            record.remaining_capacity = max_capacity - total_reserved
 
-                # Rechercher les réservations pour cette séance
-                reservations = self.env['cineprex.reservation'].search(domain)
-                total_reserved = sum(reservations.mapped('seat_count'))
-                record.remaining_capacity = max_capacity - total_reserved
-            else:
-                record.remaining_capacity = 0
-
-    @api.constrains('seat_count', 'session_id')
+    @api.constrains('seat_count')
     def _check_seat_availability(self):
         for record in self:
             if record.seat_count > record.remaining_capacity:
-                raise ValidationError("Le nombre de places réservées dépasse la capacité restante de la salle pour cette séance.")
+                raise ValidationError("Le nombre de places réservées dépasse la capacité restante de la salle.")

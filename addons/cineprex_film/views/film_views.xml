@@ -7,11 +7,10 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="title"/>
-                        <field name="duration"/>
-                        <field name="genre"/>
-                        <field name="release_date"/>
-                        <field name="description"/>
+                        <field name="title" string="Titre"/>
+                        <field name="genre" string="Genre"/>
+                        <field name="duration" string="Durée (en heures)"/>
+                        <field name="release_date" string="Date de sortie"/>
                     </group>
                 </sheet>
             </form>
@@ -24,10 +23,10 @@
         <field name="model">cineprex.film</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="title"/>
-                <field name="duration"/>
-                <field name="genre"/>
-                <field name="release_date"/>
+                <field name="title" string="Titre"/>
+                <field name="genre" string="Genre"/>
+                <field name="duration" string="Durée"/>
+                <field name="release_date" string="Date de sortie"/>
             </tree>
         </field>
     </record>

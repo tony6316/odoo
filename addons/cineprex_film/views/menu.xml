@@ -1,0 +1,24 @@
+<odoo>
+    <!-- Menu principal CinéPrex -->
+    <menuitem id="menu_cineprex_root" name="CinéPrex" sequence="1"/>
+
+    <!-- Sous-menu Films -->
+    <menuitem id="menu_films" name="Films" parent="menu_cineprex_root" sequence="10" action="cineprex_film.action_films"/>
+
+    <!-- Sous-menu Séances -->
+    <menuitem id="menu_seances" name="Séances" parent="menu_cineprex_root" sequence="20" action="cineprex_film.action_seances"/>
+
+    <!-- Action pour les Films -->
+    <record id="action_films" model="ir.actions.act_window">
+        <field name="name">Films</field>
+        <field name="res_model">cineprex.film</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Action pour les Séances -->
+    <record id="action_seances" model="ir.actions.act_window">
+        <field name="name">Séances</field>
+        <field name="res_model">cineprex.seance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

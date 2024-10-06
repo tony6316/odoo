@@ -1,15 +1,17 @@
 {
-    'name': 'CinéPrex Film Management',
+    'name': 'Gestion des Films et Séances',
     'version': '1.0',
+    'summary': 'Répertorier les films disponibles et gérer les séances de cinéma',
+    'author': 'Ton Nom',
     'category': 'Management',
-    'depends': ['base','cineprex'],
+    'depends': ['base'],
     'data': [
         'views/film_views.xml',
-        'views/affectation_film_salle_views.xml',  # Assurez-vous d'inclure ce fichier
-        'views/film_affectation_menu.xml',
+        'views/seance_views.xml',
+        'views/menu.xml',  # Assurez-vous que ce fichier est bien référencé ici
         'security/ir.model.access.csv',
     ],
     'installable': True,
-    'application': False,
+    'application': True,
     'license': 'LGPL-3',
 }

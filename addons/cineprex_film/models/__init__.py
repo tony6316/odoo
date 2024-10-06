@@ -1,2 +1,2 @@
 from . import film
-from . import seance
+from . import affectation_film_salle

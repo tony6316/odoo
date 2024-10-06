@@ -1,10 +1,18 @@
 from odoo import models, fields
 
-class CineprexFilm(models.Model):
+class Film(models.Model):
     _name = 'cineprex.film'
-    _description = 'Gestion des films et des séances'
+    _description = 'Film disponible au cinéma'
 
-    name = fields.Char(string="Nom du film", required=True)
-    salle_id = fields.Many2one('cineprex.salle', string="Salle", required=True)
-    start_time = fields.Datetime(string="Heure de début", required=True)
-    end_time = fields.Datetime(string="Heure de fin", required=True)
+    title = fields.Char(string="Titre", required=True)
+    duration = fields.Integer(string="Durée (minutes)", required=True)
+    genre = fields.Char(string="Genre", required=True)
+    release_date = fields.Date(string="Date de sortie", required=True)
+    description = fields.Text(string="Description")
+
+    def name_get(self):
+        result = []
+        for film in self:
+            name = f"{film.title}"
+            result.append((film.id, name))
+        return result

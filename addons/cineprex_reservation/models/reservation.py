@@ -18,7 +18,6 @@ class Reservation(models.Model):
 
     # Champ calculé pour vérifier la capacité restante
     remaining_capacity = fields.Integer(string="Capacité restante", compute='_compute_remaining_capacity', store=True)
-
     @api.depends('salle_id', 'session_id', 'seat_count')
     def _compute_remaining_capacity(self):
         for record in self:

@@ -1,8 +1,5 @@
 <odoo>
-    <!-- Menu racine pour Cineprex -->
-    <menuitem id="menu_cineprex_root" name="Cineprex" sequence="10"/>
-
-    <!-- Vue Formulaire pour Reservation -->
+    <!-- Vue formulaire pour la réservation -->
     <record id="view_reservation_form" model="ir.ui.view">
         <field name="name">reservation.form</field>
         <field name="model">cineprex.reservation</field>
@@ -10,49 +7,44 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="customer_name" string="Nom du client"/>
-                        <field name="film_id" string="Film"/>
-                        <field name="salle_id" string="Salle"/>
-                        <field name="reservation_date" string="Date de réservation"/>
-
-                        <!-- Champ pour sélectionner la séance avec domaine dynamique -->
-                        <field name="session_id" string="Séance"
-                               domain="[('film_id', '=', film_id),
-                                        ('salle_id', '=', salle_id),
-                                        ('start_time', '&gt;=', reservation_date),
-                                        ('end_time', '&lt;=', reservation_date)]"/>
-
-                        <field name="seat_count" string="Nombre de places"/>
-                        <field name="remaining_capacity" string="Capacité restante" readonly="1"/>
+                        <field name="customer_name" />
+                        <field name="film_id" />
+                        <field name="salle_id" />
+                        <field name="reservation_date" />
+                        <field name="session_id" />
+                        <field name="seat_count" />
+                        <field name="remaining_capacity" readonly="1" />
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- Vue Liste pour Reservation -->
+    <!-- Vue liste pour la réservation -->
     <record id="view_reservation_tree" model="ir.ui.view">
         <field name="name">reservation.tree</field>
         <field name="model">cineprex.reservation</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="customer_name" string="Nom du client"/>
-                <field name="film_id" string="Film"/>
-                <field name="salle_id" string="Salle"/>
-                <field name="reservation_date" string="Date de réservation"/>
-                <field name="session_id" string="Séance"/>
-                <field name="seat_count" string="Nombre de places"/>
+                <field name="customer_name" />
+                <field name="film_id" />
+                <field name="salle_id" />
+                <field name="reservation_date" />
+                <field name="session_id" />
+                <field name="seat_count" />
             </tree>
         </field>
     </record>
 
-    <!-- Action pour Reservation -->
+    <!-- Action pour la réservation -->
     <record id="action_reservation" model="ir.actions.act_window">
         <field name="name">Réservations</field>
         <field name="res_model">cineprex.reservation</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Menu pour Reservation -->
-    <menuitem id="menu_reservation" name="Réservations" parent="menu_cineprex_root" action="action_reservation"/>
+    <!-- Menu pour la réservation -->
+    <menuitem id="menu_cineprex_root" name="CineprexReservation" sequence="10" />
+    <menuitem id="menu_reservation" name="Réservations" parent="menu_cineprex_root"
+        action="action_reservation" />
 </odoo>

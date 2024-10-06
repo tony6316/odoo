@@ -1,5 +1,4 @@
 <odoo>
-    <!-- Vue Formulaire pour Film -->
     <record id="view_film_form" model="ir.ui.view">
         <field name="name">film.form</field>
         <field name="model">cineprex.film</field>
@@ -7,27 +6,33 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="title" string="Titre"/>
-                        <field name="genre" string="Genre"/>
-                        <field name="duration" string="Durée (en heures)"/>
-                        <field name="release_date" string="Date de sortie"/>
+                        <field name="name"/>
+                        <field name="genre"/>
+                        <field name="release_date"/>
+                        <field name="duration"/>
+                        <field name="description"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- Vue Liste pour Film -->
     <record id="view_film_tree" model="ir.ui.view">
         <field name="name">film.tree</field>
         <field name="model">cineprex.film</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="title" string="Titre"/>
-                <field name="genre" string="Genre"/>
-                <field name="duration" string="Durée"/>
-                <field name="release_date" string="Date de sortie"/>
+                <field name="name"/>
+                <field name="genre"/>
+                <field name="release_date"/>
+                <field name="duration"/>
             </tree>
         </field>
+    </record>
+
+    <record id="action_films" model="ir.actions.act_window">
+        <field name="name">Films</field>
+        <field name="res_model">cineprex.film</field>
+        <field name="view_mode">tree,form</field>
     </record>
 </odoo>

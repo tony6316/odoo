@@ -1,17 +1,19 @@
 {
-    'name': 'Gestion des Films et Séances',
+    'name': 'Cinéfilm Management',
     'version': '1.0',
-    'summary': 'Répertorier les films disponibles et gérer les séances de cinéma',
-    'author': 'Ton Nom',
-    'category': 'Management',
-    'depends': ['base'],
+    'category': 'Cinema',
+    'summary': 'Gestion des films et des séances',
+    'description': """
+        Module pour gérer les films et les séances. Les films peuvent être associés à des séances
+        qui sont tenues dans des salles spécifiques.
+    """,
+    'author': 'Votre Nom',
+    'depends': ['cineprex'],  # Dépend du module Cineprex pour les salles
     'data': [
         'views/film_views.xml',
         'views/seance_views.xml',
-        'views/menu.xml',  # Assurez-vous que ce fichier est bien référencé ici
-        'security/ir.model.access.csv',
+        'views/menu.xml',
     ],
     'installable': True,
     'application': True,
-    'license': 'LGPL-3',
 }
